@@ -1,0 +1,18 @@
+﻿@model CategoryDto
+
+<form asp-controller="Category" asp-action="Save">
+    @Html.HiddenFor(s => s.Id)
+    <div class="input-group" style="max-width:400px;margin-left:auto;">
+        <input type="text" class="form-control" placeholder="Category Name" asp-for="Name">
+        <div class="input-group-append">
+            @if (Model.Id == -1)
+            {
+                <input class="btn btn-outline-primary" type="submit" value="Add" />
+            }
+            else
+            {
+                <input class="btn btn-outline-primary" type="submit" value="Edit" />
+            }
+        </div>
+    </div>
+</form>

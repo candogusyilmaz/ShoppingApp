@@ -1,0 +1,35 @@
+﻿@model List<UserShoppingListShareDto>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (UserShoppingListShareDto item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.FullName</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <form asp-action="Share">
+                            @{
+                                int shoppingListId = ViewBag.ShoppingListId;
+                                int userId = @item.Id;
+                            }
+                            <input asp-for="@userId" type="hidden"/>
+                            <input asp-for="@shoppingListId" type="hidden"/>
+                            <input type="submit" class="btn btn-outline-warning" value="Share to User" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

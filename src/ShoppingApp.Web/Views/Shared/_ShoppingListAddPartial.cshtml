@@ -1,0 +1,28 @@
+﻿@model ShoppingListAddDto
+
+<button type="button" class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#createListModal" style="max-width: 100px;">
+    New
+</button>
+
+<div class="modal fade" id="createListModal" tabindex="-1" aria-labelledby="createListModal" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Shopping List</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="mb-1">Name of the list:</label>
+                        <input type="text" class="form-control" placeholder="My new shopping list" asp-for="Name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

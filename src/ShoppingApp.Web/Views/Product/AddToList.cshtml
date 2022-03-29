@@ -1,0 +1,44 @@
+﻿@model ShoppingListProductAddDto
+
+@{
+    ViewData["Title"] = "Add Product to Shopping List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddToList">
+            @Html.ValidationSummary(false)
+
+            @{
+                int productId = int.Parse(this.ViewContext.RouteData.Values["id"].ToString());
+            }
+            <input asp-for="ProductId" class="form-control" value="@productId" hidden />
+
+            <div class="form-group mb-2">
+                <label class="control-label" for="ShoppingListId">Shopping List</label>
+                <select asp-for="ShoppingListId" class="form-control">
+                    @foreach (ShoppingList item in (List<ShoppingList>)ViewBag.ShoppingLists)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

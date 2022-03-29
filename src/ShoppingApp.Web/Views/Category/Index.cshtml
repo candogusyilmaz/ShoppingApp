@@ -1,0 +1,7 @@
+﻿<div class="row mb-2">
+    @await Html.PartialAsync("_CategorySavePartial", (CategoryDto)ViewBag.SelectedCategory)
+</div>
+
+<div class="row">
+    @await Html.PartialAsync("_CategoryListPartial", (List<CategoryDto>)ViewBag.CategoryList)
+</div>
